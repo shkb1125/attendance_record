@@ -1,0 +1,59 @@
+.login-form {
+    margin-bottom: 20%;
+}
+
+.login-form__inner {
+    text-align: center;
+}
+
+.login-form__form {
+    padding: 10px 40px;
+}
+
+/* @media screen and (max-width: 1200px) {
+    .login-form__form {
+        width: 90vw;
+    }
+} */
+
+.login-form__group {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-form__label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.login-form__input {
+    display: block;
+    padding: 8px 12px;
+    width: 30%;
+    height: 48px;
+    border: solid 2px #909090;
+    border-radius: 6px;
+    color: #909090;
+}
+
+.login-form__error-message {
+    color: #ff9494;
+}
+
+.login-form__btn {
+    width: 30%;
+    height: 48px;
+    background-color: #214be0;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.login-form__register-text {
+    color: #909090;
+}
+
+.login-form__register-btn {
+    text-decoration: none;
+    color: #214be0;
+}

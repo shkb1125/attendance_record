@@ -1,0 +1,77 @@
+html,
+body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body,
+textarea,
+input {
+    background-color: #F2F2F2;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #fff;
+}
+
+/* ヘッダー */
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+    align-items: baseline;
+}
+
+.header__heading {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.header__nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.header__link {
+    margin: 0 auto;
+    /* width: 80px; */
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* コンテンツ */
+.content {
+    /* display: flex;
+    justify-content: center; */
+    padding: 48px;
+    background-color: #F2F2F2;
+}
+
+.content__heading {
+    text-align: center;
+    font-size: 13px;
+}
+
+/* フッター */
+.footer {
+    text-align: center;
+    margin: 10px 20px;
+    font-weight: bold;
+}

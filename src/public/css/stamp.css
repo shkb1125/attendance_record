@@ -1,0 +1,27 @@
+.stamp-panel__inner {
+    display: grid;
+    column-gap: 2em;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+}
+
+.stamp-panel__button {
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+    width: 100%;
+}
+
+.stamp-panel__button-submit {
+    /* margin-bottom: 2em; */
+    line-height: 7;
+    padding: 20px 50px;
+    width: 400px;
+    background-color: #fff;
+    border: none;
+    font-weight: bold;
+}
+
+/* .btn {
+    text-align: center;
+} */

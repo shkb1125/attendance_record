@@ -1,0 +1,82 @@
+.attendance {
+    /* display: flex;
+    justify-content: center; */
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.date-nav {
+    text-decoration: none;
+    font-size: 24px;
+    color: #000;
+}
+
+.attendance__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.attendance__heading-text {
+    margin: 10px 30px;
+}
+
+.attendance__link {
+    display: inline-block;
+    border: 1px solid #007bff;
+    background-color: #fff;
+    padding: 1px 10px;
+    text-decoration: none;
+}
+
+.attendance__table {
+    width: 100%;
+}
+
+.attendance__table,
+.attendance__row,
+.attendance__label,
+.attendance__data {
+    border-top: 1px solid #787676f7;
+    border-bottom: 1px solid #787676f7;
+}
+
+.attendance__label {
+    padding: 8px;
+    text-align: left;
+}
+
+.attendance__data {
+    padding: 8px;
+    text-align: left;
+}
+
+/* .attendance__row:nth-child(even) {
+    background-color: #f9f9f9;
+} */
+
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #007bff;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination .active a {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
