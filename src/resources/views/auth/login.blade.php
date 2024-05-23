@@ -8,7 +8,7 @@
     <div class="login-form">
         <h2 class="login-form__heading content__heading">ログイン</h2>
         <div class="login-form__inner">
-            <form class="login-form__form" action="" method="POST">
+            <form class="login-form__form" action="/login" method="POST">
                 @csrf
                 <div class="login-form__group">
                     <input class="login-form__input" type="mail" name="email" placeholder="メールアドレス">

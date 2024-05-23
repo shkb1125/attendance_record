@@ -13,7 +13,9 @@ class RestController extends Controller
     {
         $user = Auth::user();
 
-        $attendance = Attendance::where('user_id', $user->id)->latest()->first();
+        $attendance = Attendance::where('user_id', $user->id)
+            ->latest()
+            ->first();
 
         if ($attendance) {
             $restCount = Rest::where('attendance_id', $attendance->id)->count();
@@ -35,15 +37,11 @@ class RestController extends Controller
             ->latest('id')
             ->first();
 
+        $attendance->rests->last()->update([
+            'rest_end_time' => now(),
+        ]);
 
-        // $attendance = Attendance::where('user_id', $user->id)
-        //     ->latest()
-        //     ->first();
-
-        // $attendance->update([
-        //     'end_time' => now(),
-        // ]);
-        // return redirect('/');
+        return redirect('/');
     }
 
 }

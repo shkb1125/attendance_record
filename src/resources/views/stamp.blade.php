@@ -9,8 +9,13 @@
         <ul>
             <li><a href="/" class="header__link">ホーム</a></li>
             <li><a href="/attendance" class="header__link">日付一覧</a></li>
-            {{-- fortify導入後、リンク先変更予定 --}}
-            <li><a href="/login" class="header__link">ログアウト</a></li>
+            <li>
+                <form action="/logout" method="post">
+                    @csrf
+                    <input class="header__link" type="submit" value="ログアウト">
+                </form>
+                {{-- <a href="/login" class="header__link">ログアウト</a> --}}
+            </li>
         </ul>
     </nav>
 @endsection

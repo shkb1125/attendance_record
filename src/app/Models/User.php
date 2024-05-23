@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // ユーザーの勤怠情報を取得
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 }
