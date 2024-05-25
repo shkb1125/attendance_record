@@ -9,7 +9,6 @@
         <ul>
             <li><a href="/" class="header__link">ホーム</a></li>
             <li><a href="/attendance" class="header__link">日付一覧</a></li>
-            {{-- fortify導入後、リンク先変更予定 --}}
             <li>
                 <form class="form" action="/logout" method="post">
                     @csrf
@@ -23,9 +22,11 @@
 @section('content')
     <div class="attendance">
         <div class="attendance__heading content__heading">
-            <a class="attendance__link" href="#">&lt;</a>
-            <h2 class="attendance__heading-text">{{ $date }}</h2>
-            <a class="attendance__link" href="#">&gt;</a>
+            {{-- <a class="attendance__link" href="#">&lt;</a> --}}
+            <a class="attendance__link" href="{{ route('attendance.show', ['date' => $yesterdayDate]) }}">&lt;</a>
+            <h2 class="attendance__heading-text">{{ $date->format('Y-m-d') }}</h2>
+            {{-- <a class="attendance__link" href="#">&gt;</a> --}}
+            <a class="attendance__link" href="{{ route('attendance.show', ['date' => $nextDate]) }}">&gt;</a>
         </div>
         <table class="attendance__table">
             <tr class="attendance__row">
@@ -41,8 +42,8 @@
                         <td class="attendance__data">{{ $user->name }}</td>
                         <td class="attendance__data">{{ $attendance->start_time }}</td>
                         <td class="attendance__data">{{ $attendance->end_time }}</td>
-                        <td class="attendance__data">{{ $attendance->rests->first()->getTotalRestTime($attendance->id) }}</td>
-                        <td class="attendance__data">{{ $attendance->getTotalWorkTime() }}</td>
+                        <td class="attendance__data">{{ $attendance->total_rest_time }}</td>
+                        <td class="attendance__data">{{ $attendance->total_work_time }}</td>
                     </tr>
                 @endforeach
             @endforeach
@@ -55,5 +56,6 @@
             </tr> --}}
         </table>
         {{-- ページネーション --}}
+        {{ $users->links('vendor.pagination.custom') }}
     </div>
 @endsection

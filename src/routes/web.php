@@ -17,7 +17,8 @@ use App\Http\Controllers\RegisteredUserController;
 Route::middleware('auth')->group(function () {
     Route::get('/', [AttendanceController::class, 'index']);
     Route::get('/attendance', [AttendanceController::class, 'show']);
-    Route::get('/attendance/{date?}', [AttendanceController::class, 'date']);
+    // Route::get('/attendance/{date?}', [AttendanceController::class, 'date']);
+    Route::get('/attendance/{date?}', [AttendanceController::class, 'show'])->name('attendance.show');
     Route::post('/attendance/start', [AttendanceController::class, 'start']);
     Route::post('/attendance/end', [AttendanceController::class, 'stop']);
     Route::post('/rest/start', [RestController::class, 'start']);
