@@ -10,9 +10,9 @@
             <li><a href="/" class="header__link">ホーム</a></li>
             <li><a href="/attendance" class="header__link">日付一覧</a></li>
             <li>
-                <form action="/logout" method="post">
+                <form class="logout-form" action="/logout" method="post">
                     @csrf
-                    <input class="header__link" type="submit" value="ログアウト">
+                    <button class="header__link" type="submit">ログアウト</button>
                 </form>
                 {{-- <a href="/login" class="header__link">ログアウト</a> --}}
             </li>

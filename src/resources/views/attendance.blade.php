@@ -10,9 +10,9 @@
             <li><a href="/" class="header__link">ホーム</a></li>
             <li><a href="/attendance" class="header__link">日付一覧</a></li>
             <li>
-                <form class="form" action="/logout" method="post">
+                <form class="logout-form" action="/logout" method="post">
                     @csrf
-                    <button class="header__link">ログアウト</button>
+                    <button class="header__link" type="submit">ログアウト</button>
                 </form>
             </li>
         </ul>
@@ -22,10 +22,8 @@
 @section('content')
     <div class="attendance">
         <div class="attendance__heading content__heading">
-            {{-- <a class="attendance__link" href="#">&lt;</a> --}}
             <a class="attendance__link" href="{{ route('attendance.show', ['date' => $yesterdayDate]) }}">&lt;</a>
             <h2 class="attendance__heading-text">{{ $date->format('Y-m-d') }}</h2>
-            {{-- <a class="attendance__link" href="#">&gt;</a> --}}
             <a class="attendance__link" href="{{ route('attendance.show', ['date' => $nextDate]) }}">&gt;</a>
         </div>
         <table class="attendance__table">

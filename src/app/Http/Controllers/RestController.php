@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Rest;
 use App\Models\Attendance;
+use Carbon\Carbon;
 
 class RestController extends Controller
 {
@@ -22,7 +23,7 @@ class RestController extends Controller
             Rest::create([
                 'attendance_id' => $attendance->id,
                 'rest_number' => $restCount + 1,
-                'rest_start_time' => now(),
+                'rest_start_time' => Carbon::now()->format('H:i:s'),
             ]);
         }
 
@@ -38,7 +39,7 @@ class RestController extends Controller
             ->first();
 
         $attendance->rests->last()->update([
-            'rest_end_time' => now(),
+            'rest_end_time' => Carbon::now()->format('H:i:s'),
         ]);
 
         return redirect('/');

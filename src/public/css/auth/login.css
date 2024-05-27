@@ -10,16 +10,11 @@
     padding: 10px 40px;
 }
 
-/* @media screen and (max-width: 1200px) {
-    .login-form__form {
-        width: 90vw;
-    }
-} */
-
 .login-form__group {
     margin-bottom: 32px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .login-form__label {
@@ -37,8 +32,12 @@
     color: #909090;
 }
 
+/* エラーメッセージ */
 .login-form__error-message {
+    margin-top: 10px;
+    margin-bottom: 0px;
     color: #ff9494;
+    font-size: 14px;
 }
 
 .login-form__btn {

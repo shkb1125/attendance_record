@@ -3,7 +3,6 @@
 }
 
 .register-form__inner {
-
     text-align: center;
 }
 
@@ -11,16 +10,11 @@
     padding: 10px 40px;
 }
 
-/* @media screen and (max-width: 1200px) {
-    .register-form__form {
-        width: 90vw;
-    }
-} */
-
 .register-form__group {
     margin-bottom: 32px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .register-form__label {
@@ -38,8 +32,12 @@
     color: #909090;
 }
 
+/* エラーメッセージ */
 .register-form__error-message {
+    margin-top: 10px;
+    margin-bottom: 0px;
     color: #ff9494;
+    font-size: 14px;
 }
 
 .register-form__btn {

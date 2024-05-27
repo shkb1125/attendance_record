@@ -26,11 +26,14 @@ class AttendanceController extends Controller
     public function start(Request $request)
     {
         $user = Auth::user();
+        $currentDate = Carbon::now()->format('Y-m-d');
+        $currentTime = Carbon::now()->format('H:i:s');
+
         // dd($user);
         Attendance::create([
             'user_id' => $user->id,
-            'date' => now()->format('Y/m/d'),
-            'start_time' => now(),
+            'date' => $currentDate,
+            'start_time' => $currentTime,
         ]);
 
         return redirect('/');
@@ -43,7 +46,7 @@ class AttendanceController extends Controller
             ->latest('id')
             ->first();
         $attendance->update([
-            'end_time' => now(),
+            'end_time' => Carbon::now()->format('H:i:s'),
         ]);
 
         return redirect('/');

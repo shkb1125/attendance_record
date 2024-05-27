@@ -40,7 +40,7 @@
                 <div class="register-form__group">
                     <input class="register-form__input" type="password" name="password_confirmation" placeholder="確認用パスワード">
                     <p class="register-form__error-message">
-                        @error('password')
+                        @error('password_confirmation')
                             {{ $message }}
                         @enderror
                     </p>
