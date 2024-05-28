@@ -34,26 +34,19 @@
                 <th class="attendance__label">休憩時間</th>
                 <th class="attendance__label">勤務時間</th>
             </tr>
-            @foreach ($users as $user)
-                @foreach ($user->attendances as $attendance)
-                    <tr class="attendance__row">
-                        <td class="attendance__data">{{ $user->name }}</td>
-                        <td class="attendance__data">{{ $attendance->start_time }}</td>
-                        <td class="attendance__data">{{ $attendance->end_time }}</td>
-                        <td class="attendance__data">{{ $attendance->total_rest_time }}</td>
-                        <td class="attendance__data">{{ $attendance->total_work_time }}</td>
-                    </tr>
-                @endforeach
+
+            @foreach ($attendances as $attendance)
+                <tr class="attendance__row">
+                    <td class="attendance__data">{{ $attendance->user->name }}</td>
+                    <td class="attendance__data">{{ $attendance->start_time }}</td>
+                    <td class="attendance__data">{{ $attendance->end_time }}</td>
+                    <td class="attendance__data">{{ $attendance->total_rest_time }}</td>
+                    <td class="attendance__data">{{ $attendance->total_work_time }}</td>
+                </tr>
             @endforeach
-            {{-- <tr class="attendance__row">
-                <td class="attendance__data">{{ $user->name }}</td>
-                <td class="attendance__data">{{ $attendance ? $attendance->start_time : '-' }}</td>
-                <td class="attendance__data">{{ $attendance ? $attendance->end_time : '-' }}</td>
-                <td class="attendance__data">{{ $rest }}</td>
-                <td class="attendance__data">{{ $totalWorkTime }}</td>
-            </tr> --}}
+
         </table>
         {{-- ページネーション --}}
-        {{ $users->links('vendor.pagination.custom') }}
+        {{ $attendances->links('vendor.pagination.custom') }}
     </div>
 @endsection

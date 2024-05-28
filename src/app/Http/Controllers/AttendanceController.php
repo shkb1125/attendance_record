@@ -59,37 +59,33 @@ class AttendanceController extends Controller
         $yesterdayDate = $date->copy()->subDay()->format('Y-m-d');
         $nextDate = $date->copy()->addDay()->format('Y-m-d');
 
-        $users = User::with([
-            'attendances' => function ($query) use ($date) {
-                $query->whereDate('created_at', $date->format('Y-m-d'));
-            },
-            'attendances.rests'
-        ])->paginate(5);
+        // 当日のデータのみを取得
+        $attendances = Attendance::whereDate('created_at', $date->format('Y-m-d'))->paginate(5);
 
-        // 総勤務・休憩時間
-        foreach ($users as $user) {
-            foreach ($user->attendances as $attendance) {
-                $attendance->total_rest_time = Rest::getTotalRestTime($attendance->id);
-                $attendance->total_work_time = $attendance->getTotalWorkTime();
-            }
+        // ユーザー情報と総勤務・休憩時間の取得
+        foreach ($attendances as $attendance) {
+            $rest = new Rest();
+            $attendance->total_rest_time = $rest->getTotalRestTime($attendance->id);
+            // $attendance->total_rest_time = Rest::getTotalRestTime($attendance->id);
+            $attendance->total_work_time = $attendance->getTotalWorkTime();
         }
 
-        return view('attendance', compact('date', 'yesterdayDate', 'nextDate', 'users'));
+        return view('attendance', compact('date', 'yesterdayDate', 'nextDate', 'attendances'));
 
-
-        // $date = Carbon::today()->format('Y-m-d');
-        // $users = User::with('attendances.rests')->get();
-
-        // // ユーザーごとの勤怠データを処理
+        // $users = User::with([
+        //     'attendances' => function ($query) use ($date) {
+        //         $query->whereDate('created_at', $date->format('Y-m-d'));
+        //     },
+        //     'attendances.rests'
+        // ])->paginate(5);
+        // // 総勤務・休憩時間
         // foreach ($users as $user) {
         //     foreach ($user->attendances as $attendance) {
-        //         // 勤怠データが存在する場合は休憩時間を計算
         //         $attendance->total_rest_time = Rest::getTotalRestTime($attendance->id);
         //         $attendance->total_work_time = $attendance->getTotalWorkTime();
         //     }
         // }
-
-        // return view('attendance', compact('date', 'users'));
+        // return view('attendance', compact('date', 'yesterdayDate', 'nextDate', 'users'));
 
     }
 }
