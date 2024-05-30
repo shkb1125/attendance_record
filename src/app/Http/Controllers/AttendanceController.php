@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use App\Models\Rest;
 use App\Models\User;
 
+
 class AttendanceController extends Controller
 {
     public function index()
@@ -29,7 +30,6 @@ class AttendanceController extends Controller
         $currentDate = Carbon::now()->format('Y-m-d');
         $currentTime = Carbon::now()->format('H:i:s');
 
-        // dd($user);
         Attendance::create([
             'user_id' => $user->id,
             'date' => $currentDate,
@@ -59,7 +59,7 @@ class AttendanceController extends Controller
         $yesterdayDate = $date->copy()->subDay()->format('Y-m-d');
         $nextDate = $date->copy()->addDay()->format('Y-m-d');
 
-        // 当日のデータのみを取得
+        // 当日データの取得
         $attendances = Attendance::whereDate('created_at', $date->format('Y-m-d'))->paginate(5);
 
         // ユーザー情報と総勤務・休憩時間の取得
@@ -87,5 +87,26 @@ class AttendanceController extends Controller
         // }
         // return view('attendance', compact('date', 'yesterdayDate', 'nextDate', 'users'));
 
+    }
+
+    public function showUsers()
+    {
+        $users = User::paginate(5);
+        return view('attendance_users', compact('users'));
+    }
+
+    public function showUser()
+    {
+        $user = Auth::user();
+        $attendances = Attendance::where('user_id', $user->id)
+            ->latest('id')
+            ->paginate(5);
+        foreach ($attendances as $attendance) {
+            $rest = new Rest();
+            $attendance->total_rest_time = $rest->getTotalRestTime($attendance->id);
+            $attendance->total_work_time = $attendance->getTotalWorkTime();
+        }
+
+        return view('user_attendance', compact('user', 'attendances'));
     }
 }

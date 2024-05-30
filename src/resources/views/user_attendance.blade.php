@@ -24,24 +24,18 @@
 @section('content')
     <div class="attendance">
         <div class="attendance__heading content__heading">
-            <a class="attendance__link" href="{{ route('attendance.show', ['date' => $yesterdayDate]) }}">&lt;</a>
-            <h2 class="attendance__heading-text">{{ $date->format('Y-m-d') }}</h2>
-            <a class="attendance__link" href="{{ route('attendance.show', ['date' => $nextDate]) }}">&gt;</a>
+            <h2 class="attendance__heading-text">{{ $user->name }}さんの勤怠一覧</h2>
         </div>
         <table class="attendance__table">
             <tr class="attendance__row">
-                <th class="attendance__label">名前</th>
-                <th class="attendance__label">勤務開始</th>
-                <th class="attendance__label">勤務終了</th>
+                <th class="attendance__label">日付</th>
                 <th class="attendance__label">休憩時間</th>
                 <th class="attendance__label">勤務時間</th>
             </tr>
 
             @foreach ($attendances as $attendance)
                 <tr class="attendance__row">
-                    <td class="attendance__data">{{ $attendance->user->name }}</td>
-                    <td class="attendance__data">{{ $attendance->start_time }}</td>
-                    <td class="attendance__data">{{ $attendance->end_time }}</td>
+                    <td class="attendance__data">{{ $attendance->date }}</td>
                     <td class="attendance__data">{{ $attendance->total_rest_time }}</td>
                     <td class="attendance__data">{{ $attendance->total_work_time }}</td>
                 </tr>

@@ -23,7 +23,6 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            // 'email' => '認証情報が記録と一致しません。',
             'password' => 'パスワードが間違っています',
         ])->onlyInput('password');
     }

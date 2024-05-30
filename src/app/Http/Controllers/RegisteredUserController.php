@@ -26,11 +26,6 @@ class RegisteredUserController extends Controller
         ]);
         event(new Registered($user));
 
-        // ログイン処理やリダイレクトなど
-        // Auth::login($user);
-
-        // メール認証が必要なため、ログインを許可しない
         return redirect('/email/verify');
-        // return redirect('/login');
     }
 }
