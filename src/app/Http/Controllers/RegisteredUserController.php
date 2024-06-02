@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 class RegisteredUserController extends Controller
 {
@@ -25,6 +26,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
         event(new Registered($user));
+
+        Auth::login($user);
 
         return redirect('/email/verify');
     }

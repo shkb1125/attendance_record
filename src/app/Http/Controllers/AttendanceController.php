@@ -9,7 +9,6 @@ use Illuminate\Support\Carbon;
 use App\Models\Rest;
 use App\Models\User;
 
-
 class AttendanceController extends Controller
 {
     public function index()
@@ -66,26 +65,10 @@ class AttendanceController extends Controller
         foreach ($attendances as $attendance) {
             $rest = new Rest();
             $attendance->total_rest_time = $rest->getTotalRestTime($attendance->id);
-            // $attendance->total_rest_time = Rest::getTotalRestTime($attendance->id);
             $attendance->total_work_time = $attendance->getTotalWorkTime();
         }
 
         return view('attendance', compact('date', 'yesterdayDate', 'nextDate', 'attendances'));
-
-        // $users = User::with([
-        //     'attendances' => function ($query) use ($date) {
-        //         $query->whereDate('created_at', $date->format('Y-m-d'));
-        //     },
-        //     'attendances.rests'
-        // ])->paginate(5);
-        // // 総勤務・休憩時間
-        // foreach ($users as $user) {
-        //     foreach ($user->attendances as $attendance) {
-        //         $attendance->total_rest_time = Rest::getTotalRestTime($attendance->id);
-        //         $attendance->total_work_time = $attendance->getTotalWorkTime();
-        //     }
-        // }
-        // return view('attendance', compact('date', 'yesterdayDate', 'nextDate', 'users'));
 
     }
 
@@ -95,12 +78,13 @@ class AttendanceController extends Controller
         return view('attendance_users', compact('users'));
     }
 
-    public function showUser()
+    public function showUserAttendance($id)
     {
-        $user = Auth::user();
+        $user = User::findOrFail($id);
         $attendances = Attendance::where('user_id', $user->id)
             ->latest('id')
             ->paginate(5);
+
         foreach ($attendances as $attendance) {
             $rest = new Rest();
             $attendance->total_rest_time = $rest->getTotalRestTime($attendance->id);
