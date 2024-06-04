@@ -42,7 +42,7 @@
                     <td class="attendance__data">{{ $attendance->start_time }}</td>
                     <td class="attendance__data">{{ $attendance->end_time }}</td>
                     <td class="attendance__data">{{ $attendance->total_rest_time }}</td>
-                    <td class="attendance__data">{{ $attendance->total_work_time }}</td>
+                    <td class="attendance__data">{{ $attendance->end_time ? $attendance->total_work_time : '' }}</td>
                 </tr>
             @endforeach
 
