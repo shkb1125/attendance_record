@@ -11,9 +11,7 @@
 MailHog：[URL]  
 ※メール認証に使用するメールアドレスは以下のドメイン形式にて実施してください。  
 「~@example.com」  
-※EC2インスタンスとRDSのDBは提出から●日後の●月●日22:00に停止をします。その日以降に採点を行う際は齋藤コーチまたは菅野にお声がけください。  
-
-採点は六日以内
+※EC2インスタンスとRDSのDBは提出から1週間後の6月16日22:00に停止をします。その日以降に採点を行う際は齋藤コーチまたは菅野にお声がけください。  
 
 ## 機能一覧
 【会員登録ページ】  
@@ -119,6 +117,7 @@ MAIL_FROM_ADDRESS="hello@example.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 3. src/app/config配下のmail.phpに以下の環境変数を追加
+``` text
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
@@ -132,7 +131,7 @@ MAIL_FROM_NAME="${APP_NAME}"
         ],
 	~~以下略~~
     ],
-
+```
 4. docker-compose.ymlファイルにMailHogのサービスを追加
 ``` text
 mailhog:
@@ -157,8 +156,8 @@ docker-compose exec app php artisan config:cache
 docker-compose exec app php artisan config:clear
 ```
 
-## テストユーザー
-メール認証に使用するメールアドレスは以下のドメイン形式にて実施してください。
+## テストユーザー作成の注意事項
+メール認証に使用するメールアドレスは以下のドメイン形式にて実施してください。  
 「~@example.com」
 
 ## URL
