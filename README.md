@@ -59,7 +59,8 @@ MailHog：[URL]
 **Dockerビルド**
 1. `git clone git@github.com:shkb1125/attendance_record.git`  
 2. DockerDesktopアプリを立ち上げる
-3. `docker-compose up -d --build`
+3. `cd attendance_record`  
+4. `docker-compose up -d --build`
 
 > *MacのM1・M2チップのPCの場合、`no matching manifest for linux/arm64/v8 in the manifest list entries`のメッセージが表示されビルドができないことがあります。
 エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください*
@@ -72,8 +73,9 @@ mysql:
 **Laravel環境構築**
 1. `docker-compose exec php bash`
 2. `composer install`
-3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
-4. .envに以下の環境変数を追加
+3. `exit`
+4. `cp .env.example .env`
+5. .envに以下の環境変数を追加
 ``` text
 DB_CONNECTION=mysql
 DB_HOST=mysql
