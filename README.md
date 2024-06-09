@@ -10,9 +10,9 @@
 ## アプリケーションURL
 [URL]  
 ※会員登録の際のメール認証はMailHog(以下のURL)にて実行してください。  
-MailHog：[URL]  
+∟MailHog：[URL]  
 ※メール認証に使用するメールアドレスは以下のドメイン形式にて実施してください。  
-「~@example.com」  
+∟「~@example.com」  
 ※EC2インスタンスとRDSのDBは提出から1週間後の6月16日22:00に停止をします。その日以降に採点を行う際は齋藤コーチまたは菅野にお声がけください。  
 
 ## 機能一覧
@@ -93,12 +93,7 @@ php artisan key:generate
 php artisan migrate
 ```
 **MailHog環境構築**
-1. MailHogのインストール
-``` bash
-brew install mailhog
-mailhog
-```
-2. .envに以下の環境変数を追加
+1. .envに以下の環境変数を追加
 ``` text
 MAIL_MAILER=smtp
 MAIL_HOST=mailhog
@@ -109,7 +104,7 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS="hello@example.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
-3. src/app/config配下のmail.phpに以下の環境変数を追加
+2. src/config配下のmail.phpに以下の環境変数を追加
 ``` text
     'mailers' => [
         'smtp' => [
@@ -125,15 +120,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 	~~以下略~~
     ],
 ```
-4. docker-compose.ymlファイルにMailHogのサービスを追加
-``` text
-mailhog:
-   image: mailhog/mailhog
-   ports:
-     - "8025:8025"
-     - "1025:1025"
-```
-5. コンテナの再起動  
+3. コンテナの再起動  
 起動している場合
 ``` bash
 docker-compose up stop
@@ -143,15 +130,17 @@ docker-compose up -d
 ``` bash
 docker-compose up -d
 ```
-6. キャッシュクリア(設定が反映されない場合)
+4. キャッシュクリア(設定が反映されない場合)
 ``` bash
 docker-compose exec app php artisan config:cache
 docker-compose exec app php artisan config:clear
 ```
 
-**テストユーザー作成の注意事項**  
+## 注意事項
+1. テストユーザー作成の注意事項
 メール認証に使用するメールアドレスは以下のドメイン形式にて実施してください。  
 「~@example.com」
+2. ページネーションを確認する際は、手動でユーザーを6名以上作成してください。  
 
 ## URL
 - 開発環境：http://localhost/
