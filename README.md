@@ -1,7 +1,10 @@
 # Atte（アット）
 
 ## 概要
-株式会社○○の勤怠管理システム
+株式会社○○の勤怠管理システム  
+社員の勤怠管理及び、人事評価に使用するシステム  
+<img width="720" alt="stamp_202406069" src="https://github.com/shkb1125/attendance_record/assets/158729607/c79c5c26-b9e9-4107-832b-38a8498d780f">
+
 
 ## 作成した目的
 
