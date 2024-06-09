@@ -8,9 +8,9 @@
 社員の勤怠情報を管理し、人事評価のために活用する
 
 ## アプリケーションURL
-[URL]  
+### http://43.206.231.48
 ※会員登録の際のメール認証はMailHog(以下のURL)にて実行してください。  
-∟MailHog：[URL]  
+∟MailHog：http://43.206.231.48:8025  
 ※メール認証に使用するメールアドレスは以下のドメイン形式にて実施してください。  
 ∟「~@example.com」  
 ※EC2インスタンスとRDSのDBは提出から1週間後の6月16日22:00に停止をします。その日以降に採点を行う際は齋藤コーチまたは菅野にお声がけください。  
@@ -135,6 +135,11 @@ docker-compose up -d
 docker-compose exec app php artisan config:cache
 docker-compose exec app php artisan config:clear
 ```
+**注意事項**  
+Permissionエラーが発生する場合、作業ディレクトリにて以下のコマンドを実行してください。
+``` bash
+sudo chmod -R 777 src/*
+```
 
 ## 注意事項
 1. テストユーザー作成の注意事項
@@ -142,7 +147,7 @@ docker-compose exec app php artisan config:clear
 「~@example.com」
 2. ページネーションを確認する際は、手動でユーザーを6名以上作成してください。  
 
-## URL
+## URL(開発環境)
 - 開発環境：http://localhost/
-- phpMyAdmin:：http://localhost:8080/
+- phpMyAdmin：http://localhost:8080/
 - MailHog：http://localhost:8025/
