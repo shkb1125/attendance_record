@@ -36,7 +36,7 @@ MailHog：[URL]
 | ![社員一覧ページ](README/users.png) | ![勤怠情報ページ](README/date.png) |
 | 登録されているユーザー(社員)の一覧表示機能と、ユーザーごとの勤怠情報を表示するリンクを実装しました。  | ユーザーごとの勤怠情報表示機能を実装しました。 |
  
-| ☆(共通ヘッダー) |
+| ☆：共通ヘッダー |
 | ---- |
 | ![共通ヘッダー](README/header.png) |
 | ホーム：打刻ページに遷移します。  
@@ -132,7 +132,7 @@ mailhog:
      - "8025:8025"
      - "1025:1025"
 ```
-5. コンテナの再起動
+5. コンテナの再起動  
 起動している場合
 ``` bash
 docker-compose up stop
@@ -148,7 +148,7 @@ docker-compose exec app php artisan config:cache
 docker-compose exec app php artisan config:clear
 ```
 
-## テストユーザー作成の注意事項
+**テストユーザー作成の注意事項**  
 メール認証に使用するメールアドレスは以下のドメイン形式にて実施してください。  
 「~@example.com」
 
